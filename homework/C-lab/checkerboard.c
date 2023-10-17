@@ -121,6 +121,8 @@ int main(int argc, char ** argv)
     // then the array of row pointers
 
     // free all the resources that libpng allocated
+    free(row_ptrs);
+    fclose(fp);
     png_destroy_write_struct(&png_ptr, &info_ptr);
     return EXIT_SUCCESS;
 }
