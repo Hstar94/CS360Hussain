@@ -67,6 +67,8 @@ int main(int argc, char ** argv)
     text[1].compression = PNG_TEXT_COMPRESSION_NONE;
     text[1].key = "Author";
 	text[1].text = "Hussain Alhashim";
+    char title[50];
+    sprintf(title, "P%dx%d", width, height);
 	png_set_text(png_ptr, info_ptr, text, 2);
     
     // Actually write the header info

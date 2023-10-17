@@ -69,6 +69,8 @@ int main(int argc, char ** argv)
     text[1].compression = PNG_TEXT_COMPRESSION_NONE;
     text[1].key = "Author";
 	text[1].text = "Hussain Alhashim";
+    char title[50];
+    sprintf(title, "P%dx%d", width, height);
 	png_set_text(png_ptr, info_ptr, text, 2);
     
     // Actually write the header info
@@ -92,7 +94,7 @@ int main(int argc, char ** argv)
         for (int x = 0; x < width; x++)
         {
             float radius = sqrt((x - width / 2.0) * (x - width / 2.0) + (y - height / 2.0) * (y - height / 2.0));
-            float normalized_radius = radius / bullseye_radius; 
+            float inital_radius = radius / bullseye_radius; 
 
             rgb pixel;
             
@@ -103,26 +105,26 @@ int main(int argc, char ** argv)
 
             if (radius <= bullseye_radius)
             {
-                if (normalized_radius < 0.25) 
+                if (inital_radius < 0.25) 
                 {
                     // blue/cyan
-                    float factor = normalized_radius / 0.25;
+                    float factor = inital_radius / 0.25;
                     pixel.red = (1 - factor) * 0;
                     pixel.green = factor * 255;
                     pixel.blue = 255;
                 } 
-                else if (normalized_radius < 0.5) 
+                else if (inital_radius < 0.5) 
                 {
                     // cyan/green
-                    float factor = (normalized_radius - 0.25) / 0.25;
+                    float factor = (inital_radius - 0.25) / 0.25;
                     pixel.red = 0;
                     pixel.green = 255;
                     pixel.blue = (1 - factor) * 255;
                 } 
-                else if (normalized_radius < 0.75) 
+                else if (inital_radius < 0.75) 
                 {
                     // green/yellow
-                    float factor = (normalized_radius - 0.5) / 0.25;
+                    float factor = (inital_radius - 0.5) / 0.25;
                     pixel.red = factor * 255;
                     pixel.green = 255;
                     pixel.blue = 0;
@@ -130,7 +132,7 @@ int main(int argc, char ** argv)
                 else 
                 {
                     //  yellow/red
-                    float factor = (normalized_radius - 0.75) / 0.25;
+                    float factor = (inital_radius - 0.75) / 0.25;
                     pixel.red = 255;
                     pixel.green = (1 - factor) * 255;
                     pixel.blue = 0;
@@ -158,7 +160,7 @@ int main(int argc, char ** argv)
     // then the array of row pointers
 
     // free all the resources that libpng allocated
-    free(row_ptrs);
+    free(row_ptrs); // clean up
     fclose(fp);
     png_destroy_write_struct(&png_ptr, &info_ptr);
     return EXIT_SUCCESS;
