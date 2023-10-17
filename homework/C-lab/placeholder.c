@@ -4,6 +4,24 @@
 #include <stdlib.h>
 #include <png.h>
 
+void set_image_data(png_bytep * data, int w, int h)
+{
+    int red = 0xAA;  // R 170   
+    int green = 0xBB; // G 187
+    int blue = 0xCC; // B 204
+    
+    for(int j = 0; j < h; j++)
+    {
+        png_bytep row = data[j];
+        for(int i = 0; i < w; i++)
+        {
+            row[i*3] = red;       // R
+            row[i*3 + 1] = green; // G
+            row[i*3 + 2] = blue;  // B
+        }
+    }
+}
+
 int main(int argc, char ** argv)
 {
 	// Make sure we have the name of the file to create
@@ -65,6 +83,9 @@ int main(int argc, char ** argv)
     text[1].compression = PNG_TEXT_COMPRESSION_NONE;
     text[1].key = "Author";
 	text[1].text = "Hussain Alhashim";
+    char title[50];
+    sprintf(title, "P%dx%d", width, height);
+    
 	png_set_text(png_ptr, info_ptr, text, 2);
     
     // Actually write the header info
@@ -81,7 +102,7 @@ int main(int argc, char ** argv)
     
     // Now we're ready to create the image.  Write the data in row_ptrs in RGB format.
 
-
+    set_image_data(row_ptrs, width, height);
 
     // Now write out this data to the file
     png_write_image(png_ptr, row_ptrs);
@@ -102,3 +123,4 @@ int main(int argc, char ** argv)
     png_destroy_write_struct(&png_ptr, &info_ptr);
     return EXIT_SUCCESS;
 }
+
