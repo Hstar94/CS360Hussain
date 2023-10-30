@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1024" height="1024" viewBox="-50 -50 1124 1124" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g opacity="0.8">
+		<polyline points="0,700 3,786 56,784 131,784 132,1017 309,1024 320,1001 325,955 324,787 330,744 345,729 369,731 483,731 544,733 598,729 644,735 701,737 761,737 816,735 880,742 954,729 1023,735 1024,389 1022,0 923,2 923,431 931,444 937,436 936,678 937,733 " stroke="red" stroke-width="4" fill="none" />
+	</g>
+</svg>
