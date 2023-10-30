@@ -13,7 +13,7 @@ namespace GPSCS // Namespace
 
         public static void Main(string[] args)
         {
-            ValidateArguments(args); // Error handling for command line arguments 
+            ValidateArguments(args); // Error handling for command line arguments
 
             var inputFilePath = args[0];
             var outputFilePath = args[1];
@@ -24,7 +24,7 @@ namespace GPSCS // Namespace
             WriteSVGData(outputFilePath, gpsDataList);
         }
 
-        // Encapsulation (Private)
+        // Encapsulation (Private) (HIDING INFORMATION)
         private static void ValidateArguments(string[] args)
         {
             if (args.Length != 2)

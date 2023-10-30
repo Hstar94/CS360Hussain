@@ -28,13 +28,13 @@ Managed access √
 Managed Creation and Destruction √
 Hiding of the implementation (i.e. it is a secret) √
 Parameterization (Generics, specialization to one type) √
-Overloading (works for multiple types) √
+Overloading (works for multiple types) ×
 Inheritance √ 
 Overriding √
 Abstract classes √
 Class variables/methods vs. instance variables/methods √
 Polymorphism √
-Dynamic binding and dispatch √
+Dynamic binding and dispatch ×
 -----------------------------------------------
 I do Believe I did all the requirements as according to ChatGPT (will be attached). The code is compliant with the tasks
 I don't have the full history as I opened and closed a bunch of sessions trying to make heads or tails of this initally. However, I attached the important ones to me at the very least that helped me understand C code and C#.
